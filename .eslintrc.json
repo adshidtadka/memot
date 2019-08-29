@@ -29,6 +29,13 @@
     "quotes": ["error", "double"],
     "comma-dangle": ["error", "never"],
     "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }],
-    "no-use-before-define": ["error", { "variables": false }]
-  }
+    "no-use-before-define": ["error", { "variables": false }],
+    "react/prefer-stateless-function": [0, { "ignorePureComponents": false }]
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".tsx"]
+      }
+    }
 }
