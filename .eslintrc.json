@@ -4,7 +4,13 @@
     "es6": true,
     "node": true
   },
-  "extends": ["plugin:prettier/recommended", "airbnb"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:prettier/recommended",
+    "prettier/react",
+    "airbnb"
+  ],
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
@@ -16,7 +22,7 @@
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
-  "plugins": ["prettier", "react"],
+  "plugins": ["prettier"],
   "rules": {
     "prettier/prettier": "error"
   }
