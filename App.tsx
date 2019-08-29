@@ -80,7 +80,8 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 0 },
     shadowOpacity: 0.5,
     shadowRadius: 3,
-    zIndex: 10
+    zIndex: 10,
+    elevation: 5
   },
   appbarTitle: {
     color: "#fff",
@@ -99,7 +100,8 @@ const styles = StyleSheet.create({
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
-    shadowRadius: 3
+    shadowRadius: 3,
+    elevation: 5
   },
   memoAddButtonTitle: {
     fontSize: 32,
