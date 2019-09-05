@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
   },
   CircleButtonTitle: {
     fontFamily: "FontAwsome",
-    fontSize: 32,
+    fontSize: 24,
     lineHeight: 32
   }
 });
