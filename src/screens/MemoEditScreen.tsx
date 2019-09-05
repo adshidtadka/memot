@@ -25,7 +25,8 @@ const styles = StyleSheet.create({
     paddingTop: 32,
     paddingRight: 16,
     paddingLeft: 16,
-    fontSize: 16
+    fontSize: 16,
+    textAlignVertical: "top"
   }
 });
 
