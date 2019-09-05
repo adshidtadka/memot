@@ -10,6 +10,8 @@ import MemoEditScreen from "./src/screens/MemoEditScreen";
 
 import ENV from "./env.json";
 
+require("firebase/firestore");
+
 const firebaseConfig = {
   apiKey: ENV.FIREBASE_API_KEY,
   authDomain: ENV.FIREBASE_AUTH_DOMAIN,
@@ -23,14 +25,14 @@ firebase.initializeApp(firebaseConfig);
 
 const AppNavigator = createStackNavigator(
   {
+    Home: {
+      screen: MemoListScreen
+    },
     Login: {
       screen: LoginScreen
     },
     Signup: {
       screen: SignupScreen
-    },
-    Home: {
-      screen: MemoListScreen
     },
     MemoDetail: {
       screen: MemoDetailScreen
