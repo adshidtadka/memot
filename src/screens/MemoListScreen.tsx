@@ -9,8 +9,10 @@ import CircleButton from "./../elements/CircleButton";
 
 class MemoListScreen extends React.Component {
   handlePress() {
+    const { params } = this.props.navigation.state;
+    console.log(params);
     const db = firebase.firestore();
-    db.collection("memos")
+    db.collection(`users/${params.currentUser.user.uid}/memos`)
       .add({
         body: "test memo",
         createdOn: "2017-12-12"

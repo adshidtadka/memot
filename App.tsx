@@ -25,14 +25,14 @@ firebase.initializeApp(firebaseConfig);
 
 const AppNavigator = createStackNavigator(
   {
-    Home: {
-      screen: MemoListScreen
-    },
     Login: {
       screen: LoginScreen
     },
     Signup: {
       screen: SignupScreen
+    },
+    Home: {
+      screen: MemoListScreen
     },
     MemoDetail: {
       screen: MemoDetailScreen
