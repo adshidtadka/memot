@@ -22,8 +22,6 @@ class MemoDetailScreen extends React.Component {
   }
 }
 
-export default MemoDetailScreen;
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -57,3 +55,5 @@ const styles = StyleSheet.create({
     top: 75
   }
 });
+
+export default MemoDetailScreen;
