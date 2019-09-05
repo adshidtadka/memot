@@ -10,7 +10,18 @@ import MemoDetailScreen from "./src/screens/MemoDetailScreen";
 import MemoEditScreen from "./src/screens/MemoEditScreen";
 
 const AppNavigator = createStackNavigator({
-  Home: { screen: MemoListScreen }
+  Home: {
+    screen: MemoListScreen,
+    navigationOptions: {
+      headerTitle: "Memot",
+      headerStyle: {
+        backgroundColor: "#265366"
+      },
+      headerTitleStyle: {
+        color: "#fff"
+      }
+    }
+  }
 });
 
 export default createAppContainer(AppNavigator);
