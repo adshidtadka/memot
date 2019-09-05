@@ -9,6 +9,7 @@ class LoginScreen extends React.Component {
   handleChangeText(text) {
     this.setState({ email: text });
   }
+  handleSubmit() {}
   render() {
     return (
       <View style={styles.container}>
@@ -37,7 +38,7 @@ class LoginScreen extends React.Component {
         <TouchableHighlight
           style={styles.button}
           onPress={() => {
-            this.props.navigation.navigate("Home");
+            this.handleSubmit.bind(this);
           }}
           underlayColor="#c70f66"
         >
