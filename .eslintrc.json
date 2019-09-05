@@ -30,7 +30,8 @@
     "comma-dangle": ["error", "never"],
     "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }],
     "no-use-before-define": ["error", { "variables": false }],
-    "react/prefer-stateless-function": [0, { "ignorePureComponents": false }]
+    "react/prefer-stateless-function": [0, { "ignorePureComponents": false }],
+    "no-global-assign": ["error", { "exceptions": ["Object"] }]
   },
   "settings": {
     "import/resolver": {
