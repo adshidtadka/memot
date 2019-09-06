@@ -4,8 +4,8 @@ import firebase from "firebase";
 
 class LoginScreen extends React.Component {
   state = {
-    email: "",
-    password: ""
+    email: "mario@mario.com",
+    password: "mariomario"
   };
   handleChangeText(text) {
     this.setState({ email: text });
@@ -16,7 +16,7 @@ class LoginScreen extends React.Component {
       .signInWithEmailAndPassword(this.state.email, this.state.password)
       .then(user => {
         console.log("success!", user);
-        this.props.navigation.navigate("Home", { currentUser: user });
+        this.props.navigation.navigate("Home");
       })
       .catch(error => {
         console.log(error);
