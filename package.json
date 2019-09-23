@@ -19,6 +19,7 @@
     "react-native-web": "^0.11.4",
     "react-navigation": "^4.0.0",
     "react-navigation-stack": "^1.5.1",
+    "react-standalone": "^0.3.2",
     "unimodules": "^1.0.0"
   },
   "devDependencies": {
