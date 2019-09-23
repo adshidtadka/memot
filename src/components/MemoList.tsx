@@ -20,7 +20,7 @@ class MemoList extends React.Component {
   render() {
     return (
       <View style={styles.memoList}>
-        <FlatList data={this.props.memoList} renderItem={this.renderMemo} />
+        <FlatList data={this.props.memoList} renderItem={this.renderMemo.bind(this)} />
       </View>
     );
   }
