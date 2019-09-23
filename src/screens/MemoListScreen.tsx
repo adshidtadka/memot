@@ -41,12 +41,8 @@ class MemoListScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-<<<<<<< HEAD
-    width: "100%"
-=======
     width: "100%",
     backgroundColor: "#fffdf6"
->>>>>>> 9a2c952a1815430e74fdc9767ecd3311897b600f
   }
 });
 
