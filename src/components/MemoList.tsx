@@ -8,6 +8,9 @@ interface MemoListProps {
 }
 
 const dateString = date => {
+  if (date == null) {
+    return "";
+  }
   const str = date.toDate().toISOString();
   return str.split("T")[0];
 };
