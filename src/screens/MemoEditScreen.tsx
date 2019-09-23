@@ -1,37 +1,50 @@
 import React from "react";
 import { StyleSheet, View, TextInput } from "react-native";
+import firebase from "firebase";
 
 import CircleButton from "./../elements/CircleButton";
 
 class MemoEditScreen extends React.Component {
   state = {
-    memo: {}
+    body: "",
+    key: ""
   };
   componentWillMount() {
     const { params } = this.props.navigation.state;
     this.setState({
-      memo: params.memo
+      body: params.memo.body,
+      key: params.memo.key
     });
+  }
+  handlePress() {
+    const { currentUser } = firebase.auth();
+    const db = firebase.firestore();
+    db.collection(`users/${currentUser.uid}/memos`)
+      .doc(this.state.key)
+      .update({
+        body: this.state.body
+      })
+      .then(() => {
+        console.log("success!");
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
   render() {
     return (
       <View style={styles.container}>
         <TextInput
           style={styles.memoEditInput}
-          value={this.state.memo.body}
+          value={this.state.body}
           multiline
           onChangeText={text => {
             this.setState({
-              memo: { body: text }
+              body: text
             });
           }}
         />
-        <CircleButton
-          name="check"
-          onPress={() => {
-            this.props.navigation.goBack();
-          }}
-        />
+        <CircleButton name="check" onPress={this.handlePress.bind(this)} />
       </View>
     );
   }
