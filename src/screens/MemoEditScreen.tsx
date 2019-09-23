@@ -1,10 +1,15 @@
 import React from "react";
 import { StyleSheet, View, TextInput } from "react-native";
 import firebase from "firebase";
+import { NavigationScreenProp } from "react-navigation";
 
 import CircleButton from "./../elements/CircleButton";
 
-class MemoEditScreen extends React.Component {
+interface MemoEditScreenProps {
+  navigation: NavigationScreenProp<any, any>;
+}
+
+class MemoEditScreen extends React.Component<MemoEditScreenProps, object> {
   state = {
     body: "",
     key: ""
@@ -35,9 +40,7 @@ class MemoEditScreen extends React.Component {
         });
         navigation.goBack();
       })
-      .catch(error => {
-        console.log(error);
-      });
+      .catch(() => {});
   }
   render() {
     return (

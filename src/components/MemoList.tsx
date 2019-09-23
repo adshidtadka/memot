@@ -1,13 +1,18 @@
 import React from "react";
 import { StyleSheet, View, Text, FlatList } from "react-native";
 import { TouchableHighlight } from "react-native-gesture-handler";
+import { NavigationScreenProp } from "react-navigation";
+
+interface MemoListProps {
+  navigation: NavigationScreenProp<any, any>;
+}
 
 const dateString = date => {
   const str = date.toDate().toISOString();
   return str.split("T")[0];
 };
 
-class MemoList extends React.Component {
+class MemoList extends React.Component<MemoListProps, object> {
   renderMemo({ item }) {
     return (
       <TouchableHighlight

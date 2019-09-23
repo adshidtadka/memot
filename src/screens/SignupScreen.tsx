@@ -1,9 +1,13 @@
 import React from "react";
 import { StyleSheet, View, TextInput, Text, TouchableHighlight } from "react-native";
 import firebase from "firebase";
-import { StackActions, NavigationActions } from "react-navigation";
+import { StackActions, NavigationActions, NavigationScreenProp } from "react-navigation";
 
-class SignupScreen extends React.Component {
+interface SignupScreenProps {
+  navigation: NavigationScreenProp<any, any>;
+}
+
+class SignupScreen extends React.Component<SignupScreenProps, object> {
   state = {
     email: "",
     password: ""
@@ -19,9 +23,7 @@ class SignupScreen extends React.Component {
         });
         this.props.navigation.dispatch(resetAction);
       })
-      .catch(error => {
-        console.log(error);
-      });
+      .catch(() => {});
   }
   render() {
     return (

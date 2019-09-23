@@ -1,14 +1,19 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
+import { NavigationScreenProp } from "react-navigation";
 
 import CircleButton from "./../elements/CircleButton";
+
+interface MemoDetailScreenProps {
+  navigation: NavigationScreenProp<any, any>;
+}
 
 const dateString = date => {
   const str = date.toDate().toISOString();
   return str.split("T")[0];
 };
 
-class MemoDetailScreen extends React.Component {
+class MemoDetailScreen extends React.Component<MemoDetailScreenProps, object> {
   state = {
     memo: {}
   };
@@ -20,7 +25,7 @@ class MemoDetailScreen extends React.Component {
     this.setState({ memo });
   }
   render() {
-    const { memo } = this.state;
+    const { memo }: any = this.state;
     return (
       <View style={styles.container}>
         <View style={styles.memoHeader}>

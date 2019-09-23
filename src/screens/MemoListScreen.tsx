@@ -1,11 +1,16 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import firebase from "firebase";
+import { NavigationScreenProp } from "react-navigation";
 
 import MemoList from "../components/MemoList";
 import CircleButton from "./../elements/CircleButton";
 
-class MemoListScreen extends React.Component {
+interface MemoListScreenProps {
+  navigation: NavigationScreenProp<any, any>;
+}
+
+class MemoListScreen extends React.Component<MemoListScreenProps, object> {
   state = {
     memoList: []
   };

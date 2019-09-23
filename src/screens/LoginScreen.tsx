@@ -1,14 +1,18 @@
 import React from "react";
 import { StyleSheet, View, TextInput, Text, TouchableHighlight, TouchableOpacity } from "react-native";
 import firebase from "firebase";
-import { StackActions, NavigationActions } from "react-navigation";
+import { StackActions, NavigationActions, NavigationScreenProp } from "react-navigation";
 
-class LoginScreen extends React.Component {
+interface LoginScreenProps {
+  navigation: NavigationScreenProp<any, any>;
+}
+
+class LoginScreen extends React.Component<LoginScreenProps, object> {
   state = {
     email: "mario@mario.com",
     password: "mariomario"
   };
-  handleChangeText(text) {
+  handleChangeText(text: String) {
     this.setState({ email: text });
   }
   handleSubmit() {
@@ -22,9 +26,7 @@ class LoginScreen extends React.Component {
         });
         this.props.navigation.dispatch(resetAction);
       })
-      .catch(error => {
-        console.log(error);
-      });
+      .catch(() => {});
   }
   handlePress() {
     this.props.navigation.navigate("Signup");
