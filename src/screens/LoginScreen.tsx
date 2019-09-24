@@ -9,8 +9,8 @@ interface LoginScreenProps {
 
 class LoginScreen extends React.Component<LoginScreenProps, object> {
   state = {
-    email: "mario@mario.com",
-    password: "mariomario"
+    email: "",
+    password: ""
   };
   handleChangeText(text: String) {
     this.setState({ email: text });
