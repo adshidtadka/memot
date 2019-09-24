@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet, View, TextInput, Text, TouchableHighlight, TouchableOpacity } from "react-native";
 import firebase from "firebase";
 import { StackActions, NavigationActions, NavigationScreenProp } from "react-navigation";
+import * as SecureStore from "expo-secure-store";
 
 interface LoginScreenProps {
   navigation: NavigationScreenProp<any, any>;
@@ -12,6 +13,23 @@ class LoginScreen extends React.Component<LoginScreenProps, object> {
     email: "",
     password: ""
   };
+  navigateToHome() {
+    const resetAction = StackActions.reset({
+      index: 0,
+      actions: [NavigationActions.navigate({ routeName: "Home" })]
+    });
+    this.props.navigation.dispatch(resetAction);
+  }
+  async componentDidMount() {
+    const email = await SecureStore.getItemAsync("email");
+    const password = await SecureStore.getItemAsync("password");
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(() => {
+        this.navigateToHome();
+      });
+  }
   handleChangeText(text: String) {
     this.setState({ email: text });
   }
@@ -20,11 +38,9 @@ class LoginScreen extends React.Component<LoginScreenProps, object> {
       .auth()
       .signInWithEmailAndPassword(this.state.email, this.state.password)
       .then(() => {
-        const resetAction = StackActions.reset({
-          index: 0,
-          actions: [NavigationActions.navigate({ routeName: "Home" })]
-        });
-        this.props.navigation.dispatch(resetAction);
+        SecureStore.setItemAsync("email", this.state.email);
+        SecureStore.setItemAsync("password", this.state.password);
+        this.navigateToHome();
       })
       .catch(() => {});
   }
