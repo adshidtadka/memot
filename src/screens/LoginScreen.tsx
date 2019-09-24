@@ -4,6 +4,8 @@ import firebase from "firebase";
 import { StackActions, NavigationActions, NavigationScreenProp } from "react-navigation";
 import * as SecureStore from "expo-secure-store";
 
+import Loading from "../elements/Loading";
+
 interface LoginScreenProps {
   navigation: NavigationScreenProp<any, any>;
 }
@@ -11,7 +13,8 @@ interface LoginScreenProps {
 class LoginScreen extends React.Component<LoginScreenProps, object> {
   state = {
     email: "",
-    password: ""
+    password: "",
+    isLoading: true
   };
   navigateToHome() {
     const resetAction = StackActions.reset({
@@ -27,8 +30,10 @@ class LoginScreen extends React.Component<LoginScreenProps, object> {
       .auth()
       .signInWithEmailAndPassword(email, password)
       .then(() => {
+        this.setState({ isLoading: false });
         this.navigateToHome();
-      });
+      })
+      .catch();
   }
   handleChangeText(text: String) {
     this.setState({ email: text });
@@ -38,6 +43,7 @@ class LoginScreen extends React.Component<LoginScreenProps, object> {
       .auth()
       .signInWithEmailAndPassword(this.state.email, this.state.password)
       .then(() => {
+        this.setState({ isLoading: false });
         SecureStore.setItemAsync("email", this.state.email);
         SecureStore.setItemAsync("password", this.state.password);
         this.navigateToHome();
@@ -50,6 +56,7 @@ class LoginScreen extends React.Component<LoginScreenProps, object> {
   render() {
     return (
       <View style={styles.container}>
+        <Loading text="ログイン中" isLoading={this.state.isLoading} />
         <Text style={styles.title}>ログイン</Text>
         <TextInput
           style={styles.input}
