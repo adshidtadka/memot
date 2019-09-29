@@ -35,8 +35,9 @@ class LoginScreen extends React.Component<LoginScreenProps, object> {
           this.navigateToHome();
         })
         .catch(() => {});
+    } else {
+      this.setState({ isLoading: false });
     }
-    this.setState({ isLoading: false });
   }
   handleChangeText(text: String) {
     this.setState({ email: text });

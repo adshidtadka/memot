@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "memot",
+    "name": "memottt",
     "slug": "memot",
     "privacy": "public",
     "sdkVersion": "34.0.0",
@@ -18,7 +18,8 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "jp.adshidtadka.memot"
     },
     "android": {
       "package": "jp.adshidtadka.memot"
