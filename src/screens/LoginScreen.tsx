@@ -26,29 +26,37 @@ class LoginScreen extends React.Component<LoginScreenProps, object> {
   async componentDidMount() {
     const email = await SecureStore.getItemAsync("email");
     const password = await SecureStore.getItemAsync("password");
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(email, password)
-      .then(() => {
-        this.setState({ isLoading: false });
-        this.navigateToHome();
-      })
-      .catch();
+    if (email && password) {
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(email, password)
+        .then(() => {
+          this.setState({ isLoading: false });
+          this.navigateToHome();
+        })
+        .catch(() => {});
+    }
+    this.setState({ isLoading: false });
   }
   handleChangeText(text: String) {
     this.setState({ email: text });
   }
   handleSubmit() {
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(this.state.email, this.state.password)
-      .then(() => {
-        this.setState({ isLoading: false });
-        SecureStore.setItemAsync("email", this.state.email);
-        SecureStore.setItemAsync("password", this.state.password);
-        this.navigateToHome();
-      })
-      .catch(() => {});
+    if (this.state.email && this.state.password) {
+      this.setState({ isLoading: true });
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(this.state.email, this.state.password)
+        .then(() => {
+          this.setState({ isLoading: false });
+          SecureStore.setItemAsync("email", this.state.email);
+          SecureStore.setItemAsync("password", this.state.password);
+          this.navigateToHome();
+        })
+        .catch(() => {
+          this.setState({ isLoading: false });
+        });
+    }
   }
   handlePress() {
     this.props.navigation.navigate("Signup");
